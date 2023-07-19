@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Header from './components/header'
-import About from './components/about'
-import Projects from './components/projects'
-import Contact from './components/contact'
+import Header from './components/Header'
+import About from './components/About'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import resumeData from './resume'
 

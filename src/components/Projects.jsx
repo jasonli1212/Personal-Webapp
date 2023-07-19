@@ -8,7 +8,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 
 import AwesomeSlider from 'react-awesome-slider';
-import '/react-awesome-slider/dist/styles.css';
+import 'react-awesome-slider/dist/styles.css';
 
 const Section = styled.div`
   padding-top: 3%;
@@ -298,7 +298,7 @@ const CardRight = styled.div`
 `;
 
 
-const projects = () => {
+const Projects = () => {
 
   const [active, setActive] = useState(true);
   const [selectedSquare, setSelectedSquare] = useState(null);
@@ -455,4 +455,4 @@ const projects = () => {
   )
 }
 
-export default projects
+export default Projects
