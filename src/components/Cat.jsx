@@ -301,4 +301,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/cat.glb");
+useGLTF.preload("/compressed2.glb");
