@@ -8,7 +8,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 
 import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
+import '/react-awesome-slider/dist/styles.css';
 
 const Section = styled.div`
   padding-top: 3%;
