@@ -6,9 +6,6 @@ import { useState } from 'react';
 
 import { IoIosArrowDropright } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
-import Slider from "@farbenmeer/react-spring-slider";
-import { BulletComponentType } from "@farbenmeer/react-spring-slider/dist/components/bullet";
-import { ArrowComponentType } from "@farbenmeer/react-spring-slider/dist/components/arrow";
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
