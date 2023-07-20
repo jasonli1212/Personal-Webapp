@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("./models/compressed2.glb");
+  const { nodes, materials } = useGLTF("https://jacepersonalwebsite.s3.us-west-1.amazonaws.com/compressed2.glb");
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
@@ -301,4 +301,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("./models/compressed2.glb");
+useGLTF.preload("https://jacepersonalwebsite.s3.us-west-1.amazonaws.com/compressed2.glb");
