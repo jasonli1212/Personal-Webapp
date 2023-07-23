@@ -102,10 +102,13 @@ const Right = styled.div`
     margin: auto;
     right: 0;
     left: 0;
-    bottom: 0;
-    top: 90%;
+    top: 350px;
     width: 60%;
   }
+  @media only screen and (max-height:300px) {
+
+  }
+  
 `;
 
 const Contact = () => {

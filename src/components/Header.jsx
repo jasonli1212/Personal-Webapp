@@ -13,8 +13,10 @@ const Section = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width:  720px) {
+    margin-top: 20px
     height: 100hv;
+    min-height: 500px;
   }
 `;
 
@@ -39,7 +41,7 @@ const Left = styled.div`
   justify-content: center;
   gap: 15px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width:  720px) {
     flex: 1;
     align-items: center;
     height: 30%;
@@ -48,7 +50,7 @@ const Left = styled.div`
 
 const Title = styled.h1`
   font-size: calc(12px + 2.8vw);;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     text-align: center;
     font-size: 5vw;
   }
@@ -68,7 +70,7 @@ const WhatWeDo = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     text-align: center;
     font-size: 5vw;
   }
@@ -77,7 +79,7 @@ const WhatWeDo = styled.div`
 const Right = styled.div`
   flex: 3;
   position: relative;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     flex: 2;
     width: 100%;
   }
@@ -95,7 +97,7 @@ const Img = styled.img`
   margin: auto;
   animation: animate 2s infinite ease alternate;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     width: 50vw;
     height: 50vw;
   }
@@ -124,6 +126,9 @@ const Header = ({resumeData}) => {
                     sequence={resumeData.role}
                     repeat={Infinity}
                 />
+            </WhatWeDo>
+            <WhatWeDo>
+              <p>Based in San Francisco, California📍</p>
             </WhatWeDo>
         </Left>
         <Right>

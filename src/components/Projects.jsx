@@ -17,6 +17,10 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-height:300px) {
+    height: 80%;
+    margin-bottom: 40px
+  }
 `;
 
 const Title = styled.div`
@@ -174,13 +178,19 @@ const Square = styled(motion.div)`
   flex-direction: column;
   position: relative;
 
-  @media only screen and (max-width: 768px) {
-    min-height: 90%;
-    min-width: 20rem;
+  @media only screen and (max-width: 720px) {
+    min-height: 80%;
+    max-width: 15rem;
+  }
+  
+  @media only screen and (max-height:300px) {
+    flex-direction: row;
+    min-width: 470px;
   }
 `;
 
 const ProjectImg = styled.img`
+  position: relative;
   margin: 5%;
   height: 60%;
   width: 60%
@@ -189,6 +199,15 @@ const ProjectImg = styled.img`
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   border-radius: 15px;
   // object-fit: cover;
+
+  @media only screen and (max-width: 720px) {
+    max-width: 10rem;
+    max-height: 10rem;
+  }
+
+  @media only screen and (max-height:300px) {
+    // height: 80%;
+  }
 `;
 
 const ProjectDescription = styled.div`

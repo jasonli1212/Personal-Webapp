@@ -7,6 +7,10 @@ const Section = styled.div`
   height: 95%;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 720px) {
+    height: fit-content;
+  }
 `;
 
 const Window = styled(motion.div)`
@@ -22,7 +26,7 @@ const Window = styled(motion.div)`
   border-radius: 6px;
   box-shadow: 0px 0px 20px #acacac;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     max-width: 98%;
     height: fit-content;
     padding-bottom: 15px;
@@ -66,7 +70,7 @@ const Content = styled.a`
   width: 100%;
   height: 100%;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     flex-direction: column;
   }
 `;
@@ -82,7 +86,7 @@ const ProfilePic = styled.img`
   right: 0;
   margin: auto;
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     width: 35vw;
     flex-direction: column;
   }
@@ -94,9 +98,8 @@ const Profile = styled.div`
   padding-right: 3vw;
   font-size: calc(12px + 0.5vw);
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 720px) {
     font-size: 14px;
-    // font-size: 3.0vw;
     flex-direction: column;
   }
 `;
