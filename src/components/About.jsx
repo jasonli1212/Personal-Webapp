@@ -147,7 +147,7 @@ const Zoom = styled.button`
 `;
 
 
-const About = () => {
+const About = ({resumeData}) => {
   return (
     <Section id='about'>
       <Window drag dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
@@ -171,30 +171,7 @@ const About = () => {
           <Profile>
             <h3>About me</h3>
             <p>
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. 
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
-              I'm asd. I'm asd. I'm asd. I'm asd. I'm asd. I'm asd.
+              {resumeData.aboutme}
             </p>
           </Profile>
         </Content>

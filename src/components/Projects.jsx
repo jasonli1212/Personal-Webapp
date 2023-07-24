@@ -192,8 +192,8 @@ const Square = styled(motion.div)`
 const ProjectImg = styled.img`
   position: relative;
   margin: 5%;
-  height: 60%;
-  width: 60%
+  height: 60hv;
+  width: 60hvq;
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
@@ -291,6 +291,7 @@ const CardContent = styled.div`
   }
 `;
 const CardLeft = styled.div`
+  background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -317,7 +318,7 @@ const CardRight = styled.div`
 `;
 
 
-const Projects = () => {
+const Projects = ({resumeData}) => {
 
   const [active, setActive] = useState(true);
   const [selectedSquare, setSelectedSquare] = useState(null);
@@ -328,27 +329,26 @@ const Projects = () => {
   }, []);
 
   const renderSquares = () => {
-    const squares = ['yellow', 'green', 'blue', 'violet'];
-    return squares.map((color, i) => (
+    const projects = resumeData.projects;
+    return projects.map((project, i) => (
       <Square
-        color={color}
         key={i}
         transition={{ duration: .2, type: 'spring' }}
         zIndex={2}
       >
-        <ProjectImg src={`./img/ava.png`} draggable="false" />
+        <ProjectImg src={project.thumbnail} draggable="false" />
         <ProjectDescription>
-          <ProjectTitle>Project {i + 1}</ProjectTitle>
+          <ProjectTitle>{project.name}</ProjectTitle>
           <br/>
           <p>
-            This is a short project description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            {project.shortDescription}
           </p>
         </ProjectDescription>
         <ForMore>
           <IoIosArrowDropright 
           fontSize={"4em"}
           color={"rgba(150,150,150,0.6)"}
-          onClick={() => setSelectedSquare(color)}
+          onClick={() => setSelectedSquare(project)}
           style={
             { bottom: '0', position: 'absolute', right: '0', margin: '10px'  }
           }
@@ -388,7 +388,7 @@ const Projects = () => {
       </Title>
       
       { active ?
-        (<Content color={selectedSquare}>
+        (<Content>
           <AnimatePresence mode='wait' initial={false}>
             {selectedSquare 
             ? (
@@ -401,7 +401,7 @@ const Projects = () => {
                 transition={{ duration: .4 }}
               >
                 <CardHeader>
-                  <h2>Lorem ipsumasdasdas</h2>
+                  <h2>{selectedSquare.name}</h2>
                   <button onClick={() => setSelectedSquare(null)}>
                     <ForMore>
                       <AiOutlineClose size={32} />
@@ -412,30 +412,15 @@ const Projects = () => {
                   <CardLeft>
                       <AwesomeSlider
                         animation="foldOutAnimation"
-                        bullets={false}
-                      >
-                        <div data-src="./img/ava.png" draggable='false' />
-                        <div data-src="./img/ava.png" />
-                        <div data-src="./img/ava.png" />
-                        <div data-src="./img/background.jpg" />
+                        bullets={true}
+                        style={{width: '100%', height: '70%'}}
+                      > 
+                        {selectedSquare.imgs.map(img => <div key={img} data-src={img.src} draggable='false'/>)}
                       </AwesomeSlider>
                   </CardLeft>
                   <CardRight>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nulla euismod, nisl vitae aliquam ultricies, nunc nisl
-                      dignissim diam, vitae aliquam nunc nisl vitae nisl. Donec
-                      euismod, nisl vitae aliquam ultricies, nunc nisl dignissim
-                      diam, vitae aliquam nunc nisl vitae nisl. Donec euismod,
-                      nisl vitae aliquam ultricies, nunc nisl dignissim diam,
-                      vitae aliquam nunc nisl vitae nisl. Donec euismod, nisl
-                      vitae aliquam ultricies, nunc nisl dignissim diam, vitae
-                      aliquam nunc nisl vitae nisl. Donec euismod, nisl vitae
-                      aliquam ultricies, nunc nisl dignissim diam, vitae
-                      aliquam nunc nisl vitae nisl. Donec euismod, nisl vitae
-                      aliquam ultricies, nunc nisl dignissim diam, vitae
-                      aliquam nunc nisl vitae nisl. Donec euismod, nisl vitae
-                      aliquam ultricies, nunc nisl dignissim diam, vitae
+                      {selectedSquare.fullDescription}
                     </p>
                   </CardRight>
                 </CardContent>
