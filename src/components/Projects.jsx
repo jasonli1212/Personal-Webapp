@@ -164,6 +164,7 @@ const SquareContainer = styled(motion.div)`
 `;
 
 const Square = styled(motion.div)`
+  z-index: 99;
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
@@ -192,13 +193,13 @@ const Square = styled(motion.div)`
 const ProjectImg = styled.img`
   position: relative;
   margin: 5%;
-  height: 60hv;
-  width: 60hvq;
+  height: 20rem;
+  width: 20rem;
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   border-radius: 15px;
-  // object-fit: cover;
+  object-fit: cover;
 
   @media only screen and (max-width: 720px) {
     max-width: 10rem;
@@ -419,9 +420,18 @@ const Projects = ({resumeData}) => {
                       </AwesomeSlider>
                   </CardLeft>
                   <CardRight>
-                    <p>
-                      {selectedSquare.fullDescription}
-                    </p>
+                    <h3>
+                      {selectedSquare.date}
+                    </h3>
+                    <ul>
+                      {selectedSquare.fullDescription.map(dis => <li key={dis}>{dis}</li>)}
+                    </ul>
+                    {
+                      selectedSquare.url ?
+                      <a href = {selectedSquare.url}>Link</a>
+                      :
+                      null
+                    }
                   </CardRight>
                 </CardContent>
               </CardWarpper>
