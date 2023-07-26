@@ -107,10 +107,10 @@ let resumeData = {
                                     "Styled Components to style the website.",
                             ],
                             
-            "thumbnail": "/img/reactPortfolio.jpg",
+            "thumbnail": "/img/ava.png",
             "imgs":[
                 {
-                    "src": "/img/reactPortfolio.jpg",
+                    "src": "/img/ava.png",
                 },
             ],
         },

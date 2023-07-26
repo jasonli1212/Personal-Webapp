@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import Header from './components/Header'
 import About from './components/About'
 import Projects from './components/Projects'
-import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import resumeData from './resume'
+// import Contact from './components/Contact'
+import React, {Suspense} from 'react'
 
 const Section = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ const Container = styled.div`
 `;
 
 function App() {
+  const Contact =  React.lazy(() => import('./components/Contact'));
 
   return (
     <>
@@ -36,7 +38,9 @@ function App() {
         <Header resumeData={resumeData}/>
         <About resumeData={resumeData}/>
         <Projects resumeData={resumeData}/>
-        <Contact resumeData={resumeData}/>
+        <Suspense fallback={"Loading..."}>
+          <Contact resumeData={resumeData}/>
+        </Suspense>
       </Container>
     </>
   )
