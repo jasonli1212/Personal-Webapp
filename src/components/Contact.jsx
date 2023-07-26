@@ -4,10 +4,6 @@ import emailjs from '@emailjs/browser';
 
 import Loading from './Loading.jsx'
 
-import * as THREE from 'three';
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { Stage } from '@react-three/drei';
 
 const Section = styled.div`
   padding-top: 3%;
@@ -130,7 +126,7 @@ const Contact = () => {
       });
   };
 
-  const Cat =  React.lazy(() => import('./Cat.jsx'));
+  const ThreeCat =  React.lazy(() => import('./ThreeCat.jsx'));
 
   return (
     <Section id='contact'>
@@ -149,18 +145,7 @@ const Contact = () => {
           </Left>
           <Right>
             <Suspense fallback={<Loading/>}>
-              <Canvas
-              linear
-              flat
-              gl={{ antialias: true, toneMapping: THREE.NoToneMapping }}
-              >
-                <PerspectiveCamera makeDefault position={[0, 0, 1]} zoom={0.68} />
-                <Stage preset="rembrandt" environment={"city"} intensity={0.4}>
-                  <ambientLight intensity={0.6} />
-                    <Cat />
-                </Stage>
-                <OrbitControls enableZoom = {false}/>
-              </Canvas>
+              <ThreeCat/>
             </Suspense>
           </Right>
         </Container>
