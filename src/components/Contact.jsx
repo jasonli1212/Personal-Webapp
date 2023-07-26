@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,Suspense } from 'react'
 import styled from "styled-components";
 import emailjs from '@emailjs/browser';
-import * as THREE from 'three';
 
+import Loading from './Loading.jsx'
+
+import * as THREE from 'three';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import Cat from './Cat.jsx';
 import { Stage } from '@react-three/drei';
 
 const Section = styled.div`
@@ -129,6 +130,8 @@ const Contact = () => {
       });
   };
 
+  const Cat =  React.lazy(() => import('./Cat.jsx'));
+
   return (
     <Section id='contact'>
         <Container>
@@ -145,18 +148,20 @@ const Contact = () => {
             </form>
           </Left>
           <Right>
-            <Canvas
-            linear
-            flat
-            gl={{ antialias: true, toneMapping: THREE.NoToneMapping }}
-            >
-              <PerspectiveCamera makeDefault position={[0, 0, 1]} zoom={0.68} />
-              <Stage preset="rembrandt" environment={"city"} intensity={0.4}>
-                <ambientLight intensity={0.6} />
-                <Cat />
-              </Stage>
-              <OrbitControls enableZoom = {false}/>
-            </Canvas>
+            <Suspense fallback={<Loading/>}>
+              <Canvas
+              linear
+              flat
+              gl={{ antialias: true, toneMapping: THREE.NoToneMapping }}
+              >
+                <PerspectiveCamera makeDefault position={[0, 0, 1]} zoom={0.68} />
+                <Stage preset="rembrandt" environment={"city"} intensity={0.4}>
+                  <ambientLight intensity={0.6} />
+                    <Cat />
+                </Stage>
+                <OrbitControls enableZoom = {false}/>
+              </Canvas>
+            </Suspense>
           </Right>
         </Container>
     </Section>
