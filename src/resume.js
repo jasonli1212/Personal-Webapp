@@ -1,6 +1,6 @@
 let resumeData = {
 
-    "linkedinId":"Your LinkedIn Id",
+    "linkedinId":"https://www.linkedin.com/in/jiayao-li-6ab037268/",
     "email":"jasonli121@berkeley.edu",
     "github":"https://github.com/jasonli1212",
 
