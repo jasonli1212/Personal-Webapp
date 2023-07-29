@@ -5,7 +5,7 @@ import {motion, AnimatePresence} from 'framer-motion'
 import { useState } from 'react';
 
 import { IoIosArrowDropright } from "react-icons/io";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineLink, AiFillGithub } from "react-icons/ai";
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
@@ -252,8 +252,8 @@ const CardWarpper = styled(motion.div)`
 const CardHeader = styled.div`
   height: min-content;
   display: flex;
-  justify-content: space-between;
   margin: 10px 30px;
+  position: relative;
 
   @media only screen and (max-width: 768px) {
     margin: 10px;
@@ -264,6 +264,13 @@ const CardHeader = styled.div`
     height: min-content;
     font-size: calc(1.5rem + 1vw);
     font-weight: 600;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
   }
 
   button {
@@ -317,6 +324,38 @@ const CardRight = styled.div`
   margin: 10px;
   overflow: wrap;
 `;
+
+const Description = styled.div`
+  font-size: calc(0.5rem + 0.5vw);
+
+  ul {
+    padding: 10px;
+    margin: 0;
+    li {
+      margin: 10px 0;
+    }
+  }
+`;
+
+const DescriptionLink = styled.div`
+  margin-top:20px;
+  a {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+    -webkit-backdrop-filter: blur(3px);
+    box-shadow: 0px 0px 2px rgba(30,30,30,0.5);
+    color: black;
+  }
+  :hover {
+    color: gray;
+  }
+`;
+
 
 
 const Projects = ({resumeData}) => {
@@ -423,15 +462,47 @@ const Projects = ({resumeData}) => {
                     <h3>
                       {selectedSquare.date}
                     </h3>
-                    <ul>
-                      {selectedSquare.fullDescription.map(dis => <li key={dis}>{dis}</li>)}
-                    </ul>
+                    <Description>
+                    
+                      <ul>
+                        {selectedSquare.fullDescription.map(dis => <li key={dis}>{dis}</li>)}
+                      </ul>
+
                     {
-                      selectedSquare.url ?
-                      <a href = {selectedSquare.url}>Link</a>
+                      selectedSquare.skills ?
+                        <> 
+                          <span style={{fontWeight: 'bold'}}>Skills: </span>
+                          {selectedSquare.skills.map((skill, index) => (
+                            <span key={skill}>
+                              {skill}
+                              {index !== selectedSquare.skills.length - 1 ? ", " : ""}
+                            </span>
+                          ))}
+                        </>
                       :
                       null
                     }
+                    </Description>
+                  <DescriptionLink>
+                    <p>
+                    {
+                      selectedSquare.url ?
+                      <a href = {selectedSquare.url}>
+                        <AiOutlineLink/>
+                      </a>
+                      :
+                      null
+                    }
+                    {
+                      selectedSquare.github ?
+                      <a href = {selectedSquare.github}>
+                        <AiFillGithub/>
+                      </a>
+                      :
+                      null
+                    }
+                    </p>
+                  </DescriptionLink>
                   </CardRight>
                 </CardContent>
               </CardWarpper>

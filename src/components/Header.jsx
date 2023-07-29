@@ -2,6 +2,10 @@ import React, { Suspense } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import { TypeAnimation } from "react-type-animation";
+
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+
+
 // import { Canvas } from "@react-three/fiber";
 // import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
@@ -109,6 +113,26 @@ const Img = styled.img`
   }
 `;
 
+const Link = styled.div`
+  font-size: calc(12px + 0.9vw);
+  margin-top:20px;
+  a {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+    -webkit-backdrop-filter: blur(3px);
+    box-shadow: 0px 0px 2px rgba(30,30,30,0.5);
+    color: black;
+  }
+  :hover {
+    color: gray;
+  }
+`;
+
 const Header = ({resumeData}) => {
   console.lonm
   return (
@@ -118,7 +142,6 @@ const Header = ({resumeData}) => {
           <Title>Hello There ✋</Title>
             <Subtitle>I am {" "}
                 <span style={{ color: "#7f58b8" }}>{resumeData.name}</span>
-                ,
             </Subtitle>
             <WhatWeDo>
                 <span>a </span>
@@ -130,6 +153,14 @@ const Header = ({resumeData}) => {
             <WhatWeDo>
               <p>Based in San Francisco, California📍</p>
             </WhatWeDo>
+            <Link>
+              <a href = {resumeData.github}>
+                <AiFillGithub/>
+              </a>
+              <a href = {resumeData.linkedinId}>
+                <AiFillLinkedin/>
+              </a>
+            </Link>
         </Left>
         <Right>
           <Img src="./img/header.png" />

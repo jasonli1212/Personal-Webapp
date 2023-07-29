@@ -33,6 +33,7 @@ let resumeData = {
                     "src": "./img/numC.jpg",
                 },
                 ],
+            "skills":["C", "Intel Intrinsic", "OpenMP", "Matrix Computation", "Benchmark"],
         },
         {
             "name":"Pintos",
@@ -48,6 +49,7 @@ let resumeData = {
                 },
                 ],
             "url":"https://cs162.org/static/proj/pintos-docs/",
+            "skills":["C", "Operating System", "MLFQ", "Cache", "Clock Algorithm", "Memory", "File System", "Process Controller"],
         },
         {
             "name":"Pac-Man",
@@ -66,6 +68,7 @@ let resumeData = {
                 }
                 ],
             "url":"http://ai.berkeley.edu/project_overview.html",
+            "skills":["Python", "AI", "Search", "DFS", "BFS", "UCS", "A* Search", "Minimax", "Alpha-Beta Pruning", "Expectimax", "Multiagent"],
         },
         {
             "name":"Rubik-Sawyer",
@@ -95,6 +98,7 @@ let resumeData = {
                 }
                 ],
             "url":"https://sites.google.com/berkeley.edu/rcs/home",
+            "skills":["Python", "OpenCV", "Robotics", "ROS", "Mechanics", "Computer Vision", "Inverse Kinematics", "Forward Kinematics", "Path Planning", "PID Control"],
         },
         {
             "name":"React Portfolio",
