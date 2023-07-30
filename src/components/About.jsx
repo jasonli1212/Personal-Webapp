@@ -167,11 +167,30 @@ const About = ({resumeData}) => {
 
         <Content className='row'>
           <ProfilePic src='./img/ava.png'/>
-
           <Profile>
             <h3>About me</h3>
             <p>
               {resumeData.aboutme}
+            </p>
+            <br/>
+            <h3>Skills</h3>
+            <p>
+            {resumeData.skills.map((skill, index) => (
+              <span key={skill}>
+                {skill}
+                {index !== resumeData.skills.length - 1 ? ",  " : ""}
+              </span>
+            ))}
+            </p>
+            <br/>
+            <h3>Tech</h3>
+            <p>
+            {resumeData.toolsTech.map((skill, index) => (
+              <span key={skill}>
+                {skill}
+                {index !== resumeData.toolsTech.length - 1 ? ", " : ""}
+              </span>
+            ))}
             </p>
           </Profile>
         </Content>
