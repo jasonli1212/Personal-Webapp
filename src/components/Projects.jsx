@@ -156,7 +156,6 @@ const Content = styled(motion.div)`
 
 const SquareContainer = styled(motion.div)`
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 2px rgba(30,30,30,0.5);
   border-radius: 15px;
   display: flex;
@@ -166,7 +165,6 @@ const SquareContainer = styled(motion.div)`
 const Square = styled(motion.div)`
   z-index: 99;
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   margin: 10px;
   width: 30rem;
@@ -190,16 +188,15 @@ const Square = styled(motion.div)`
   }
 `;
 
-const ProjectImg = styled.img`
+const ProjectImgWrapper = styled.div`
   position: relative;
   margin: 5%;
   height: 20rem;
   width: 20rem;
-  background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  -webkit-backdrop-filter: blur(3px);
+  background-image: linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   border-radius: 15px;
-  object-fit: cover;
+  overflow: hidden;
 
   @media only screen and (max-width: 720px) {
     max-width: 10rem;
@@ -211,10 +208,15 @@ const ProjectImg = styled.img`
   }
 `;
 
+const ProjectImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 const ProjectDescription = styled.div`
   border-radius: 15px;
   // background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  // -webkit-backdrop-filter: blur(3px);
   // box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   width: 90%;
   height: ;
@@ -237,7 +239,6 @@ const CardWarpper = styled(motion.div)`
   border-radius: 15px;
   box-shadow: 0px 0px 0px rgba(30,30,30,0.5);
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  -webkit-backdrop-filter: blur(3px);
   position: relative;
   overflow: visible;
 
@@ -299,21 +300,30 @@ const CardContent = styled.div`
   }
 `;
 const CardLeft = styled.div`
-  background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 2;
   border-radius: 15px;
-  background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  -webkit-backdrop-filter: blur(3px);
   box-shadow: 0px 0px 4px rgba(30,30,30,0.5);
   margin: 10px;
   padding: 2%;
   position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background-image: linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+    pointer-events: none;
+  }
+
   @media only screen and (max-width: 768px) {
     width: 80%;
-    
   }
 `;
 
@@ -347,7 +357,6 @@ const DescriptionLink = styled.div`
     margin: 5px;
     border-radius: 15px;
     background-image:linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-    -webkit-backdrop-filter: blur(3px);
     box-shadow: 0px 0px 2px rgba(30,30,30,0.5);
     color: black;
   }
@@ -365,8 +374,10 @@ const Projects = ({resumeData}) => {
   const [width, setWidth] = useState(100);
   const carousel = useRef();
   useEffect(() => {
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-  }, []);
+    if (carousel.current) {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    }
+  }, [selectedSquare]);
 
   const renderSquares = () => {
     const projects = resumeData.projects;
@@ -376,7 +387,9 @@ const Projects = ({resumeData}) => {
         transition={{ duration: .2, type: 'spring' }}
         zIndex={2}
       >
-        <ProjectImg src={project.thumbnail} draggable="false" />
+        <ProjectImgWrapper>
+          <ProjectImg src={project.thumbnail} draggable="false" />
+        </ProjectImgWrapper>
         <ProjectDescription>
           <ProjectTitle>{project.name}</ProjectTitle>
           <br/>
@@ -455,7 +468,7 @@ const Projects = ({resumeData}) => {
                         bullets={true}
                         style={{width: '100%', height: '70%'}}
                       > 
-                        {selectedSquare.imgs.map(img => <div key={img} data-src={img.src} draggable='false'/>)}
+                        {selectedSquare.imgs.map(img => <div key={img.src} data-src={img.src} draggable='false'/>)}
                       </AwesomeSlider>
                   </CardLeft>
                   <CardRight>
